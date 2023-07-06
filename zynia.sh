@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# make sure we are running sudo
+# setup sudo, if not root
 if [ $(id -u) -ne 0 ]
 then
   SUDO=sudo
@@ -11,23 +11,8 @@ fi
 # apt update
 ${SUDO} apt update
 
-# Alsa Utilities
-${SUDO} apt install alsa-utils
-
-# Firefox
-${SUDO} DEBIAN_FRONTEND=noninteractive apt-get install libevent-dev libdbus-glib-1-dev -y
-wget https://github.com/starfive-tech/Debian/releases/download/v0.8.0-engineering-release-wayland/firefox_105.0_202305_riscv64.deb
-${SUDO} dpkg -i firefox_105.0_202305_riscv64.deb
-rm firefox_105.0_202305_riscv64.deb
-
-# Chromium
-${SUDO} DEBIAN_FRONTEND=noninteractive apt-get install libre2-9 libminizip-dev -y
-wget https://github.com/starfive-tech/Debian/releases/download/v0.8.0-engineering-release-wayland/chromium-103.0.5060.114.deb
-${SUDO} dpkg -i chromium-103.0.5060.114.deb
-rm chromium-103.0.5060.114.deb
-
 # Jack2
-${SUDO} apt install -y jack2
+${SUDO} apt install -y qjackctl
 
 # PureData
 ${SUDO} apt install -y puredata
@@ -43,11 +28,19 @@ ${SUDO} apt install -y jalv
 
 # LV2 plugins
 #  Invada Studio Plugins
-${SUDO} apt install invada-studio-plugins-lv2
+${SUDO} apt install -y invada-studio-plugins-lv2
 # Calf plugins
-${SUDO} apt install calf-plugins
+${SUDO} apt install -y calf-plugins
 
-
+# Sample midi files
+${SUDO} mkdir /usr/share/sounds/midi
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/87216.mid
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/28362.mid
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/16752.mid
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/28316.mid
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/104840.mid
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/35017.mid
+${SUDO} wget -P /usr/share/sounds/midi https://bitmidi.com/uploads/37464.mid
 
 # Turn off pipewire
 systemctl --user mask pipewire.service
