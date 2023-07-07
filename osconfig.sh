@@ -17,9 +17,17 @@ ${SUDO} rm -f foo-$$
 read -p "Username for additional user?: " USERNAME
 if [ -n "${USERNAME}" ]
 then
+  read -p "Full name for ${USERNAME}?: " FULLNAME
+  if [ -z "${FULLNAME}" ]; then FULLNAME="Zynia User"; fi
+  read -p "Email for ${USERNAME}?: " EMAIL
+  if [ -z "${EMAIL}" ]; then EMAIL="user@zynia.org"; fi
   ${SUDO} adduser --gecos "" ${USERNAME}
   ${SUDO} usermod -aG sudo ${USERNAME}
   ${SUDO} echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" | ${SUDO} tee /etc/sudoers.d/${USERNAME} >/dev/null
+else
+  USERNAME="user"
+  FULLNAME="Zynia User"
+  EMAIL="user@zynia.org"
 fi
 
 # resize partition4 on sd card to take up rest of space
@@ -32,6 +40,12 @@ ${SUDO} apt update
 
 # git
 ${SUDO} apt install -y git
+pushd ~${USERNAME} 2>/dev/null >/dev/null
+echo "[user]" >.gitconfig
+echo -e "\temail = ${EMAIL}" >>.gitconfig
+echo -e "\tname = ${FULLNAME}" >>.gitconfig
+popd ~${USERNAME} 2>/dev/null >/dev/null
+
 
 # Firefox
 ${SUDO} DEBIAN_FRONTEND=noninteractive apt-get install libevent-dev libdbus-glib-1-dev -y
