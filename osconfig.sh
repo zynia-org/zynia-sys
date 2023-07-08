@@ -39,7 +39,7 @@ ${SUDO} /sbin/resize2fs /dev/mmcblk1p4
 ${SUDO} apt update
 
 # build-essential
-${SUDO} apt install build-essential
+${SUDO} apt install -y build-essential
 
 # git
 ${SUDO} apt install -y git gh
