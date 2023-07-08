@@ -6,8 +6,11 @@ To build Zynia:
 1.  Create SD card conatining latest Debian release for the VisionFive2 board from rvspace.org.
 2.  Boot the VF2 board using this SD card; username is "user"; password is "starfive"
 3.  Open a terminal and get the osconfig.sh and zynia.sh scripts using:
+
      `wget https://github.com/zynia-org/zynia-sys/releases/latest/download/osconfig.sh`
+
      `wget https://github.com/zynia-org/zynia-sys/releases/latest/download/zynia.sh`
+
 4.  Run the osconfig.sh script using: `bash osconfig.sh`
     This will ask for the following:
        > a. Password for current "user" account (which is "starfive").
