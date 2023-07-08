@@ -27,7 +27,7 @@ To build Zynia:
 
 5.  When it comes back up, login with the new user account (i.e., NOT the account named "user")
 
-6.  Open a terminal and run `bash zynia.sh`.
+6.  Open a terminal and run `bash ~user/zynia.sh`.
 
     This will run unattended for 10+ minutes while it downloads, installs, and configures the various components of the currrent zynia configuration.
 

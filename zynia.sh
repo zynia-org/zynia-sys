@@ -12,19 +12,19 @@ fi
 ${SUDO} apt update
 
 # Jack2
-${SUDO} apt install -y qjackctl
+${SUDO} DEBIAN_FRONTEND=noninteractive apt install -y qjackctl
 
 # PureData
-${SUDO} apt install -y puredata
+${SUDO} DEBIAN_FRONTEND=noninteractive apt install -y puredata
 
 # ZynAddSynth
-${SUDO} apt install -y zynaddsubfx
+${SUDO} DEBIAN_FRONTEND=noninteractive apt install -y zynaddsubfx
 
 # Fluidsynth
-${SUDO} apt install -y fluidsynth
+${SUDO} DEBIAN_FRONTEND=noninteractive apt install -y fluidsynth
 
 # JALV
-${SUDO} apt install -y jalv
+${SUDO} DEBIAN_FRONTEND=noninteractive apt install -y jalv
 
 # LV2 plugins
 #  Invada Studio Plugins
