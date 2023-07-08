@@ -39,7 +39,7 @@ ${SUDO} /sbin/resize2fs /dev/mmcblk1p4
 ${SUDO} apt update
 
 # git
-${SUDO} apt install -y git
+${SUDO} apt install -y git gh
 pushd ~${USERNAME} 2>/dev/null >/dev/null
 echo "[user]" >.gitconfig
 echo -e "\temail = ${EMAIL}" >>.gitconfig
